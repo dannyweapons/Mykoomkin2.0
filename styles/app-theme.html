@@ -1,0 +1,779 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-styles/typography.html">
+<link rel="import" href="../bower_components/paper-styles/color.html">
+
+<style is="custom-style">
+
+  :root {
+    --primary-text-color: var(--paper-grey-900);
+    --primary-background-color: #ffffff;
+    --secondary-text-color: #737373;
+    --disabled-text-color: #9b9b9b;
+    --divider-color: #dbdbdb;
+    --primary-color:rgb(41,125,182);
+    --light-primary-color: var(--paper-indigo-100);
+    --dark-primary-color: var(--paper-indigo-700);
+    --accent-color: var(--paper-pink-a200);
+    --light-accent-color: var(--paper-pink-a100);
+    --dark-accent-color: var(--paper-pink-a400);
+
+    /* Components */
+
+    /* paper-drawer-panel */
+    --drawer-menu-color: rgb(41,125,182);
+    --drawer-border-color: 1px solid #ccc;
+    --drawer-toolbar-border-color: 1px solid rgba(0, 0, 0, 0.22);
+
+    /* paper-menu */
+    --paper-menu-background-color: transparent;
+    --menu-link-color: #111111;
+  }
+
+  /* General styles */
+
+  body {
+    @apply(--layout-fullbleed);
+    @apply(--layout-vertical);
+  }
+
+  .space {
+    @apply(--layout-flex);
+  }
+
+  #drawerToolbar {
+    color: var(--secondary-text-color);
+    background-color: var(--drawer-menu-color);
+    border-bottom: var(--drawer-toolbar-border-color);
+  }
+
+  #drawerToolbar .menu-name {
+    @apply(--paper-font-title);
+    color: white;
+
+  }
+
+  img {
+    float: left;
+    margin-right: 10px;
+    width: 35px;
+  }
+
+  h1{
+    padding:0px;
+    font-size: 16px;
+    margin-bottom: 3px;
+    margin-top: 1px;
+  }
+
+  p.subtitle{
+    font-size: 11px;
+    color: #a3a3a3;
+    margin-top: 0px;
+  }
+
+  paper-scroll-header-panel {
+    height: 100%;
+  }
+
+  paper-menu {
+    --paper-menu-selected-item: {
+      color: var(--primary-color);
+    }
+
+    --paper-menu-focused-item-after: {
+      background: var(--primary-color);
+    }
+  }
+
+  paper-menu iron-icon {
+    opacity: 0.74;
+    color: white;
+    padding-left: 12px
+  }
+
+  paper-menu a {
+    @apply(--layout-horizontal);
+    @apply(--layout-center);
+
+    text-decoration: none;
+    color: var(--menu-link-color);
+    font-family: 'Roboto', 'Noto', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    min-height: 48px;
+    padding: 0 16px;
+  }
+
+  #mainToolbar.app-name {
+    height: 10px;
+    width: 10px;
+    font-size: 40px;
+    font-weight: 300;
+    /* Required for main area's paper-scroll-header-panel custom condensing transformation */
+    -webkit-transform-origin: left center;
+    transform-origin: left center;
+  }
+
+  #mainToolbar.logo {
+    height: 10px;
+    width: 20px;
+    padding-left: 10px;
+  }
+
+  #mainToolbar .middle-container,
+  #mainToolbar .bottom-container {
+    @apply(--layout-horizontal);
+  }
+
+  #mainToolbar .middle-container  {
+    height: 100%;
+    margin-left: 48px;
+  }
+
+  #mainToolbar:not(.tall) .middle-container {
+    font-size: 18px;
+    padding-bottom: 0;
+  }
+
+  #mainToolbar .bottom-container {
+    @apply(--paper-font-subhead);
+
+    margin-left: 48px;
+    /* Required for main area's paper-scroll-header-panel custom condensing transformation */
+    -webkit-transform-origin: left center;
+    transform-origin: left center;
+  }
+  /* Height of the scroll area */
+  .content {
+    height: 100%;
+  }
+
+  section[data-route="home"] paper-material {
+    @apply(--paper-font-body2);
+  }
+
+  section[data-route="home"] paper-material .subhead {
+    @apply(--paper-font-subhead);
+  }
+
+  paper-material {
+    border-radius: 2px;
+    border-color: black;
+    height: 100%;
+    padding: 6px 0 0 0;
+    width: calc(32.44% - 16px);
+    margin: 8px auto;
+    background: white;
+  }
+
+  #toast .toast-hide-button {
+    color: #eeff41;
+    margin: 10px;
+  }
+
+  section[tabindex="-1"]:focus { outline: none; }
+
+  /* Breakpoints */
+
+  /* Small */
+  @media (max-width: 600px) {
+
+    #drawer .paper-toolbar {
+      margin-left: 16px;
+    }
+
+    #mainToolbar.tall .app-name {
+      font-size: 24px;
+      font-weight: 400;
+    }
+
+    paper-material {
+      border-color: black;
+      --menu-container-display: none;
+      width: calc(97.33% - 32px);
+      padding-left: 18px;
+      padding-right: 20px;
+    }
+
+  }
+
+  /* Tablet+ */
+  @media (min-width: 601px) {
+
+    #drawer.paper-drawer-panel > [drawer] {
+      border-right: 1px solid rgba(0, 0, 0, 0.14);
+    }
+
+    iron-pages {
+      padding-left: 8px;
+    }
+
+    paper-material {
+      border-color: black;
+      width: calc(34.70% - 41px);
+      margin-bottom: 5px;
+      padding-left: 10px;
+      padding-right: 10px;
+      display: inline-block;
+    }
+
+    paper-material.table {
+      border-color: black;
+      width: calc(73.70% - 41px);
+      height: 460px;
+      margin-bottom: 5px;
+      margin-right: 10px;
+      padding-left: 15px;
+      padding-right: 10px;
+      display: inline-block;
+      float: left;
+    }
+
+/* Clase para los 4 cuadros de la derecha */
+    paper-material.cuadro {
+      border-color: black;
+      width: calc(27.70% - 41px);
+      height: 92px;
+      margin-bottom: 5px;
+      padding-left: 10px;
+      padding-right: 10px;
+      display: inline-block;
+      float: left;
+    }
+
+/* Clase para la informacion del primer cuadro de la derecha */
+    p.datos1{
+      color: #00a6d4;
+      text-align: center;
+      font-size: 22px;
+      margin-top: 0px;
+    }
+
+/* Clase para la informacion del segundo cuadro de la derecha */
+    p.datos2{
+      color: #63c654;
+      text-align: center;
+      font-size: 22px;
+      margin-top: 0px;
+    }
+
+/* Clase para la informacion del terce cuadro de la derecha */
+    p.datos3{
+      color: #10cebc;
+      text-align: center;
+      font-size: 22px;
+      margin-top: 0px;
+    }
+
+/* Clase para la informacion del cuarto cuadro de la derecha */
+    p.datos4{
+      color: #703b8c;
+      text-align: center;
+      font-size: 22px;
+      margin-top: 0px;
+    }
+
+  }
+    .rate-image {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 100px;
+      background-size: cover;
+    }
+    paper-icon-button.rate-icon {
+      --iron-icon-fill-color: white;
+      --iron-icon-stroke-color: #10cebc;
+      float: right;
+      position: relative;
+      padding-top: 0px;
+      height: 28px;
+    }
+    .rate-empresa {  
+      font-size: 14px;
+      color: #3db665; 
+      padding-top: 2px;
+    }
+    .rate-correo { 
+      font-size: 12px;
+      color: #3790ce; 
+      float: right;
+      position: relative;
+
+    }
+    .rate-telefono { 
+      font-size: 12px;
+      color: #f26432;
+      float: right; 
+      position: relative;
+    }
+    .rate-lead { 
+      font-size: 12px;
+      color: #76797b;
+      float: right; 
+      position: relative;
+    }
+    .rate-header { 
+      color: #76797b;
+      font-size: 12px;
+      position: absolute;
+    }
+    .rate-nombre { 
+      font-size: 14px;
+      color: black; 
+    }
+    .rate-button { 
+      font-size: 14px;
+      float: right; 
+      background-color:#10cebc; 
+      color: white;
+      border-color: transparent;
+      border-radius: 2px;
+      margin: 10px;
+    }
+    .heading {
+      padding: 2px 2px;
+      margin-top: 5px;
+      background-color: #fff;
+      font-size: 18px;
+      cursor: pointer;
+      width: 30%;
+      text-align: left;
+      border-color: transparent;
+    }
+    .content-msg{
+      padding: 5px;
+      border-color: transparent;
+      height: 100%;
+      width: 30%;
+    }
+    .card-content{ 
+      width: 35%;
+      border-style: solid;
+      padding: 3px;
+      border-color: #d0d1d1;
+      border-width: 1px;
+      height: 13%;
+    }
+    .card-info{ 
+      width: 63.5%;
+      border-style: solid;
+      padding: 3px;
+      border-color: #d0d1d1;
+      border-width: 1px;
+      float: right;
+      height: 72.2%;
+    }
+    .card-button{ 
+      width: 99.2%;
+      border-style: solid;
+      padding: 3px;
+      border-color: #d0d1d1;
+      border-width: 1px;
+      height: 10%;
+    }
+    .collapse1{
+      width: 100%; 
+    }
+  /* Material Design Adaptive Breakpoints */
+  /*
+    Below you'll find CSS media queries based on the breakpoint guidance
+    published by the Material Design team. You can choose to use, customise
+    or remove these breakpoints based on your needs.
+
+    http://www.google.com/design/spec/layout/adaptive-ui.html#adaptive-ui-breakpoints
+   */
+
+  /* mobile-small */
+  @media all and (min-width: 0) and (max-width: 360px) and (orientation: portrait) { 
+
+  img {
+    float: left;
+    margin-right: 10px;
+    width: 40px;
+  }
+
+  h1{
+    padding:0px;
+    font-size: 16px;
+    margin-bottom: 4px;
+    margin-top: 7px;
+  }
+
+  p.subtitle{
+    font-size: 11px;
+    color: #a3a3a3;
+    margin-top: 0px;
+  }
+  /* Clase para la informacion del primer cuadro de la derecha */
+    p.datos1{
+      color: #00a6d4;
+      text-align: center;
+      font-size: 24px;
+      margin-top: 0px;
+    }
+
+/* Clase para la informacion del segundo cuadro de la derecha */
+    p.datos2{
+      color: #63c654;
+      text-align: center;
+      font-size: 24px;
+      margin-top: 0px;
+    }
+
+/* Clase para la informacion del terce cuadro de la derecha */
+    p.datos3{
+      color: #10cebc;
+      text-align: center;
+      font-size: 24px;
+      margin-top: 0px;
+    }
+    
+/* Clase para la informacion del cuarto cuadro de la derecha */
+    p.datos4{
+      color: #703b8c;
+      text-align: center;
+      font-size: 24px;
+      margin-top: 0px;
+    }
+  }
+  /* mobile-large */
+  @media all and (min-width: 361px) and (orientation: portrait) { }
+  /* mobile-small-landscape */
+  @media all and (min-width: 0) and (max-width: 480px) and (orientation: landscape) { 
+
+  img {
+    float: left;
+    margin-right: 10px;
+    width: 40px;
+  }
+
+  h1{
+    padding:0px;
+    font-size: 16px;
+    margin-bottom: 4px;
+    margin-top: 7px;
+  }
+
+  p.subtitle{
+    font-size: 11px;
+    color: #a3a3a3;
+    margin-top: 0px;
+  }
+  /* Clase para la informacion del primer cuadro de la derecha */
+    p.datos1{
+      color: #00a6d4;
+      text-align: center;
+      font-size: 24px;
+      margin-top: 0px;
+    }
+
+/* Clase para la informacion del segundo cuadro de la derecha */
+    p.datos2{
+      color: #63c654;
+      text-align: center;
+      font-size: 24px;
+      margin-top: 0px;
+    }
+
+/* Clase para la informacion del terce cuadro de la derecha */
+    p.datos3{
+      color: #10cebc;
+      text-align: center;
+      font-size: 24px;
+      margin-top: 0px;
+    }
+    
+/* Clase para la informacion del cuarto cuadro de la derecha */
+    p.datos4{
+      color: #703b8c;
+      text-align: center;
+      font-size: 24px;
+      margin-top: 0px;
+    }
+  }
+  /* mobile-large-landscape */
+  @media all and (min-width: 481px) and (orientation: landscape) { }
+  /* tablet-small-landscape */
+  @media all and (min-width: 600px) and (max-width: 960px) and (orientation: landscape) { 
+
+  img {
+    float: left;
+    margin-right: 10px;
+    width: 40px;
+  }
+
+  h1{
+    padding:0px;
+    font-size: 16px;
+    margin-bottom: 4px;
+    margin-top: 7px;
+  }
+
+  p.subtitle{
+    font-size: 11px;
+    color: #a3a3a3;
+    margin-top: 0px;
+  }
+  /* Clase para la informacion del primer cuadro de la derecha */
+    p.datos1{
+      color: #00a6d4;
+      text-align: center;
+      font-size: 24px;
+      margin-top: 0px;
+    }
+
+/* Clase para la informacion del segundo cuadro de la derecha */
+    p.datos2{
+      color: #63c654;
+      text-align: center;
+      font-size: 24px;
+      margin-top: 0px;
+    }
+
+/* Clase para la informacion del terce cuadro de la derecha */
+    p.datos3{
+      color: #10cebc;
+      text-align: center;
+      font-size: 24px;
+      margin-top: 0px;
+    }
+    
+/* Clase para la informacion del cuarto cuadro de la derecha */
+    p.datos4{
+      color: #703b8c;
+      text-align: center;
+      font-size: 24px;
+      margin-top: 0px;
+    }
+  }
+  /* tablet-large-landscape */
+  @media all and (min-width: 961px) and (orientation: landscape) { }
+  /* tablet-small */
+  @media all and (min-width: 600px) and (orientation: portrait) { }
+  /* tablet-large */
+  @media all and (min-width: 601px) and (max-width: 840px) and (orientation : portrait) { }
+  /* desktop-x-small-landscape */
+  @media all and (min-width: 0) and (max-width: 480px) and (orientation: landscape) { 
+
+  img {
+    float: left;
+    margin-right: 10px;
+    width: 40px;
+  }
+
+  h1{
+    padding:0px;
+    font-size: 16px;
+    margin-bottom: 4px;
+    margin-top: 7px;
+  }
+
+  p.subtitle{
+    font-size: 11px;
+    color: #a3a3a3;
+    margin-top: 0px;
+  }
+  /* Clase para la informacion del primer cuadro de la derecha */
+    p.datos1{
+      color: #00a6d4;
+      text-align: center;
+      font-size: 24px;
+      margin-top: 0px;
+    }
+
+/* Clase para la informacion del segundo cuadro de la derecha */
+    p.datos2{
+      color: #63c654;
+      text-align: center;
+      font-size: 24px;
+      margin-top: 0px;
+    }
+
+/* Clase para la informacion del terce cuadro de la derecha */
+    p.datos3{
+      color: #10cebc;
+      text-align: center;
+      font-size: 24px;
+      margin-top: 0px;
+    }
+    
+/* Clase para la informacion del cuarto cuadro de la derecha */
+    p.datos4{
+      color: #703b8c;
+      text-align: center;
+      font-size: 24px;
+      margin-top: 0px;
+    }
+  }
+  /* desktop-x-small */
+  @media all and (min-width: 0) and (max-width: 480px) and (max-aspect-ratio: 4/3) {
+
+  img {
+    float: left;
+    margin-right: 10px;
+    width: 40px;
+  }
+
+  h1{
+    padding:0px;
+    font-size: 16px;
+    margin-bottom: 4px;
+    margin-top: 7px;
+  }
+
+  p.subtitle{
+    font-size: 11px;
+    color: #a3a3a3;
+    margin-top: 0px;
+  }
+  /* Clase para la informacion del primer cuadro de la derecha */
+    p.datos1{
+      color: #00a6d4;
+      text-align: center;
+      font-size: 24px;
+      margin-top: 0px;
+    }
+
+/* Clase para la informacion del segundo cuadro de la derecha */
+    p.datos2{
+      color: #63c654;
+      text-align: center;
+      font-size: 24px;
+      margin-top: 0px;
+    }
+
+/* Clase para la informacion del terce cuadro de la derecha */
+    p.datos3{
+      color: #10cebc;
+      text-align: center;
+      font-size: 24px;
+      margin-top: 0px;
+    }
+    
+/* Clase para la informacion del cuarto cuadro de la derecha */
+    p.datos4{
+      color: #703b8c;
+      text-align: center;
+      font-size: 24px;
+      margin-top: 0px;
+    } }
+  /* desktop-small-landscape */
+  @media all and (min-width: 481px) and (max-width: 840px) and (orientation: landscape) { 
+
+  img {
+    float: left;
+    margin-right: 10px;
+    width: 40px;
+  }
+
+  h1{
+    padding:0px;
+    font-size: 16px;
+    margin-bottom: 4px;
+    margin-top: 7px;
+  }
+
+  p.subtitle{
+    font-size: 11px;
+    color: #a3a3a3;
+    margin-top: 0px;
+  }
+  /* Clase para la informacion del primer cuadro de la derecha */
+    p.datos1{
+      color: #00a6d4;
+      text-align: center;
+      font-size: 24px;
+      margin-top: 0px;
+    }
+
+/* Clase para la informacion del segundo cuadro de la derecha */
+    p.datos2{
+      color: #63c654;
+      text-align: center;
+      font-size: 24px;
+      margin-top: 0px;
+    }
+
+/* Clase para la informacion del terce cuadro de la derecha */
+    p.datos3{
+      color: #10cebc;
+      text-align: center;
+      font-size: 24px;
+      margin-top: 0px;
+    }
+    
+/* Clase para la informacion del cuarto cuadro de la derecha */
+    p.datos4{
+      color: #703b8c;
+      text-align: center;
+      font-size: 24px;
+      margin-top: 0px;
+    }
+}
+  /* desktop-small */
+  @media all and (min-width: 481px) and (max-width: 840px) and (max-aspect-ratio: 4/3) {
+
+  img {
+    float: left;
+    margin-right: 10px;
+    width: 40px;
+  }
+
+  h1{
+    padding:0px;
+    font-size: 16px;
+    margin-bottom: 4px;
+    margin-top: 7px;
+  }
+
+  p.subtitle{
+    font-size: 11px;
+    color: #a3a3a3;
+    margin-top: 0px;
+  }
+  /* Clase para la informacion del primer cuadro de la derecha */
+    p.datos1{
+      color: #00a6d4;
+      text-align: center;
+      font-size: 24px;
+      margin-top: 0px;
+    }
+
+/* Clase para la informacion del segundo cuadro de la derecha */
+    p.datos2{
+      color: #63c654;
+      text-align: center;
+      font-size: 24px;
+      margin-top: 0px;
+    }
+
+/* Clase para la informacion del terce cuadro de la derecha */
+    p.datos3{
+      color: #10cebc;
+      text-align: center;
+      font-size: 24px;
+      margin-top: 0px;
+    }
+    
+/* Clase para la informacion del cuarto cuadro de la derecha */
+    p.datos4{
+      color: #703b8c;
+      text-align: center;
+      font-size: 24px;
+      margin-top: 0px;
+    }
+  }
+  /* desktop-medium-landscape */
+  @media all and (min-width: 841px) and (max-width: 1280px) and (orientation: landscape) { }
+  /* desktop-medium */
+  @media all and (min-width: 841px) and (max-width: 1280px) and (max-aspect-ratio: 4/3) { }
+  /* desktop-large */
+  @media all and (min-width: 1281px) and (max-width: 1600px) { }
+  /* desktop-xlarge */
+  @media all and (min-width: 1601px) and (max-width: 1920px) { }
+</style>

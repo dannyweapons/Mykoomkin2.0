@@ -1,0 +1,58 @@
+<link rel=import href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../../bower_components/google-chart/google-chart.html">
+
+<dom-module id="leads-chart">
+	<template>
+		<style>
+			#leadschart {
+        		height: 200px;
+        		width: 100%;            
+ 			}
+		</style>
+		
+		<google-chart
+			id="leadschart"
+            type='column'
+            options='{
+            	"title": "", 
+            	"chartArea": {"width": "90%","height": "75%"},
+              "colors": ["#00a6d4"],
+              "legend": {
+                "position": "none"
+              },
+            	"vAxis": {"minValue" : 0, "maxValue": 30}
+                   }'      
+           	cols='[{"label": "Mes", "type": "string"},{"label": "Leads", "type": "number"}]'
+            rows='[["Ene", 15.0],["Feb", 14.0],["Mar", 6.0],["Abr", 4.0],["May", 5.0],["Jun", 18.0],["Jul", 23.0],["Ago", 19.0],["Sep",24.0],["Oct", 25.0],["Nov", 14.0],["Dic", 21.0],["Est", 16.0]]'>
+        </google-chart>   
+	</template>
+	<script>
+		Polymer({
+			is: "leads-chart",
+			behaviors: [
+        Polymer.IronResizableBehavior
+      ],
+
+      listeners: {
+        'iron-resize': '_onIronResize'
+      },
+
+      attached: function() {
+        this.async(this.notifyResize, 1);
+      },
+
+      get parent() {
+        if (this.parentNode.nodeType === Node.DOCUMENT_FRAGMENT_NODE) {
+          return this.parentNode.host;
+        }
+        return this.parentNode;
+      },
+
+      _onIronResize: function() {
+        // Ensure every chart is redrawn on resize for full responsiveness
+        this.$.leadschart.redraw(); 
+      }
+		});
+	</script>
+</dom-module>

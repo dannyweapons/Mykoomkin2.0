@@ -1,0 +1,74 @@
+<link rel=import href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../../bower_components/google-chart/google-chart.html">
+
+<dom-module id="quotation-chart">
+	<template>
+		<style>
+			#quotationchart {
+        		height: 200px;
+        		width: 102%;
+ 			}
+		</style>
+		
+		<google-chart
+			id="quotationchart"
+            type='line'
+            options='{
+            	"title": "", 
+            	"chartArea": {"width": "87%","height": "71%"},
+              "curveType": "function",
+              "colors": ["#10cebc"],
+              "pointSize": 7,
+              "legend": {
+                "position": "none"
+              },
+              "lineWidth": 4,
+            	"vAxis": {"minValue" : 0, "maxValue": 30}
+                   }'      
+           	cols='[{"label": "Día", "type": "string"},{"label": "Visitas", "type": "number"}]'
+            rows='[ 
+          ["día 2",  80],
+          ["día 4",  120],
+          ["día 6",  160],
+          ["día 8",  130],
+          ["día 10",  140],
+          ["día 12",  170],
+          ["día 14",  166],
+          ["día 16",  130],
+          ["día 18",  150],
+          ["día 20",  110],
+          ["día 22",  180],
+          ["día 24",  176],
+          ["día 26",  121]]'>
+        </google-chart>   
+	</template>
+	<script>
+		Polymer({
+			is: "quotation-chart",
+			behaviors: [
+        Polymer.IronResizableBehavior
+      ],
+
+      listeners: {
+        'iron-resize': '_onIronResize'
+      },
+
+      attached: function() {
+        this.async(this.notifyResize, 1);
+      },
+
+      get parent() {
+        if (this.parentNode.nodeType === Node.DOCUMENT_FRAGMENT_NODE) {
+          return this.parentNode.host;
+        }
+        return this.parentNode;
+      },
+
+      _onIronResize: function() {
+        // Ensure every chart is redrawn on resize for full responsiveness
+        this.$.quotationchart.redraw(); 
+      }
+		});
+	</script>
+</dom-module>

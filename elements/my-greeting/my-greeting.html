@@ -1,0 +1,37 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-styles/typography.html">
+
+<dom-module id="my-greeting">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+      }
+
+      span,
+      input {
+        @apply(--paper-font-body2);
+      }
+    </style>
+
+    <h1 class="page-title" tabindex="-1">{{greeting}}</h1>
+    <!-- Listens for "input" event and sets greeting to <input>.value -->
+  </template>
+
+  <script>
+    (function() {
+      'use strict';
+
+      Polymer({
+        is: 'my-greeting',
+        properties: {
+          greeting: {
+            type: String,
+            value: 'Bienvenido a MyKoomkin',
+            notify: true
+          }
+        }
+      });
+    })();
+  </script>
+</dom-module>

@@ -1,0 +1,87 @@
+<link rel=import href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../../bower_components/google-chart/google-chart.html">
+
+<dom-module id="state-chart">
+	<template>
+		<style>
+			#statechart {
+        		height: 200px;
+        		width: 69%;
+            float: left;
+ 			}
+		</style>
+		
+		<google-chart
+            id="statechart"
+            type='geo'    
+            options='{"region": "MX",
+                 "resolution": "provinces",
+                 "legend": "none",
+                 "colorAxis": {"colors": ["white", "orange"]}}'
+            data='[["Estado", "Leads"],
+                   ["Baja California", 100],
+                   ["Sonora", 100],
+                   ["Chihuahua", 100],
+                   ["Coahuila", 100],
+                   ["Nuevo León", 100],
+                   ["Tamaulipas", 100],
+                   ["Sinaloa", 100],
+                   ["Nayarit", 100],
+                   ["Durango", 100],
+                   ["Zacatecas", 400],
+                   ["Jalisco", 400],
+                   ["Colima", 400],
+                   ["Tlaxcala", 400],
+                   ["Aguascalientes", 400],
+                   ["Zacatecas", 400],
+                   ["San Luis Potosí", 400],
+                   ["Puebla", 400],
+                   ["Guanajuato", 400],
+                   ["Querétaro", 400],
+                   ["Hidalgo", 400],
+                   ["Morelos", 400],
+                   ["Estado de México", 400],
+                   ["Distrito Federal", 400],
+                   ["Baja California Sur", 350],
+                   ["Michoacán", 200],
+                   ["Guerrero", 200],
+                   ["Oaxaca", 200],
+                   ["Veracruz", 200],
+                   ["Tabasco", 200],
+                   ["Campeche", 300],
+                   ["Chiapas", 200],
+                   ["Quintana Roo", 300],
+                   ["Yucatán", 300]]'>
+        </google-chart>  
+	   </template>
+	<script>
+		Polymer({
+			is: "state-chart",
+			
+      behaviors: [
+        Polymer.IronResizableBehavior
+      ],
+
+      listeners: {
+        'iron-resize': '_onIronResize'
+      },
+
+      attached: function() {
+        this.async(this.notifyResize, 1);
+      },
+
+      get parent() {
+        if (this.parentNode.nodeType === Node.DOCUMENT_FRAGMENT_NODE) {
+          return this.parentNode.host;
+        }
+        return this.parentNode;
+      },
+
+      _onIronResize: function() {
+        // Ensure every chart is redrawn on resize for full responsiveness
+        this.$.statechart.redraw(); 
+      }
+		});
+	</script>
+</dom-module>

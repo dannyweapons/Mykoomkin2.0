@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="generator" content="Polymer Starter Kit">
+  <title>MyKoomkin</title>
+  <!-- Place favicon.ico in the `app/` directory -->
+  <!-- Chrome for Android theme color -->
+  <meta name="theme-color" content="#2E3AA1">
+  <!-- Web Application Manifest -->
+  <link rel="manifest" href="manifest.json">
+  <!--Iconos para la pwa -->
+  <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="apple-mobile-web-app-title" content="MyKoomkin">
+  <meta name="application-name" content="MyKoomkin">
+  <meta name="theme-color" content="#ebf3fd"> 
+  <!-- build:css styles/main.css -->
+  <link rel="stylesheet" href="styles/main.css">
+  <!-- endbuild-->
+  <!-- build:js bower_components/webcomponentsjs/webcomponents-lite.min.js -->
+  <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+  <!-- endbuild -->
+  <!-- Because this project uses vulcanize this should be your only html import
+       in this file. All other imports should go in elements.html -->
+  <link rel="import" href="elements/elements.html">
+  <link rel="import" href="../bower_components/vaadin-grid-master/vaadin-grid.html">
+  <!-- For shared styles, shared-styles.html import in elements.html -->
+</head>
+
+<body unresolved>
+  <!-- build:remove -->
+  <span id="browser-sync-binding"></span>
+  <!-- endbuild -->
+  <template is="dom-bind" id="app">
+    <paper-drawer-panel id="paperDrawerPanel">
+      <!-- Drawer Scroll Header Panel -->
+      <paper-scroll-header-panel drawer fixed>
+        <!-- Drawer Toolbar -->
+        <paper-toolbar id="drawerToolbar">
+          <span class="menu-name">Menu</span>
+        </paper-toolbar>
+
+        <!-- Drawer Content -->
+        <paper-menu class="app-menu" attr-for-selected="data-route" selected="[[route]]">
+          <a data-route="home" href="{{baseUrl}}home">
+            <iron-icon icon="home"></iron-icon>
+          </a>
+          <a data-route="reporte" href="{{baseUrl}}reporte">
+            <iron-icon icon="assessment"></iron-icon>
+          </a>
+          <a data-route="modificar" href="{{baseUrl}}modificar">
+            <iron-icon icon="important-devices"></iron-icon>
+          </a>
+          <a data-route="facturas" href="{{baseUrl}}facturas">
+            <iron-icon icon="chrome-reader-mode"></iron-icon>
+          </a>
+          <a data-route="salir" href="{{baseUrl}}salir">
+            <iron-icon icon="exit-to-app"></iron-icon>
+          </a>
+        </paper-menu>
+      </paper-scroll-header-panel>
+      <!-- Main Area -->
+      <paper-scroll-header-panel main id="headerPanelMain" condenses keep-condensed-header>
+        <!-- Main Toolbar -->
+        <paper-toolbar id="mainToolbar" >
+          <paper-icon-button id="paperToggle" icon="menu" paper-drawer-toggle></paper-icon-button>
+        </paper-toolbar>
+        <!-- Main Content -->
+        <div class="content">
+          <iron-pages attr-for-selected="data-route" selected="{{route}}">
+            <section data-route="home" tabindex="-1">
+              <paper-material elevation="1">
+                  <my-greeting></my-greeting>   
+              </paper-material>
+            </section>
+            <section data-route="reporte" tabindex="-1">
+              <paper-material elevation="2">
+                <img src="images/iconos/RLeads.png"></img>
+                <h1>Reporte de Leads</h1>
+                <p class="subtitle">Oportunidades de venta últimos 12 meses</p>  
+                <hr>
+                  <leads-chart></leads-chart>  
+              </paper-material>
+              <paper-material elevation="2">
+                <img src="images/iconos/REstado.png"></img>
+                <h1>Reporte de Leads por Estado</h1>
+                <p class="subtitle">Oportunidades de venta por Estado últimos 12 meses</p>  
+                <hr>  
+                <state-chart></state-chart>
+                <minitable-chart></minitable-chart>
+              </paper-material>
+              <paper-material elevation="2">
+                <img src="images/iconos/Cotizaciones.png"></img>
+                <h1>Cotizaciones</h1>
+                <p class="subtitle">Oportunidades de Venta (30 días)</p>  
+                <hr>  
+                <quotation-chart></quotation-chart>
+              </paper-material>
+              <paper-material elevation="2" class="table">
+                <img src="images/iconos/DLeads.png"></img>
+                <h1>Detalle Leads</h1>
+                <p class="subtitle">Descripción de las oportunidades de venta</p> 
+                <hr>     
+                <div class="card-info">
+                  <div class="rate-header"><strong>23/07/17</strong></div>
+                  <div class="rate-correo">jperez@patito.com</div><br>
+                  <div class="rate-telefono">55-4567-5678</div>
+                  <div class="rate-nombre"><strong>Juan Peréz</strong></div>
+                  <paper-icon-button class="rate-icon" icon="thumb-up"></paper-icon-button>
+                  <paper-icon-button class="rate-icon" icon="thumb-down"></paper-icon-button>
+                </div>
+                  <div class="rate-empresa"><strong>Empresa Patito</strong></div>
+                </div>       
+              <paper-card class="rate">  
+                <div class="card-content">
+                  <div class="rate-header"><strong>23/07/17</strong></div>
+                  <div class="rate-correo">jperez@patito.com</div><br>
+                  <div class="rate-telefono">55-4567-5678</div>
+                  <div class="rate-nombre"><strong>Juan Peréz</strong></div>
+                  <div class="card-actions">
+                  <paper-icon-button class="rate-icon" icon="thumb-up"></paper-icon-button>
+                  <paper-icon-button class="rate-icon" icon="thumb-down"></paper-icon-button>
+                </div>
+                  <div class="rate-empresa"><strong>Empresa Patito</strong></div>
+                </div>
+                <div class="card-content">
+                  <div class="rate-header"><strong>23/07/17</strong></div>
+                  <div class="rate-correo">jperez@patito.com</div><br>
+                  <div class="rate-telefono">55-4567-5678</div>
+                  <div class="rate-nombre"><strong>Juan Peréz</strong></div>
+                  <div class="card-actions">
+                  <paper-icon-button class="rate-icon" icon="thumb-up"></paper-icon-button>
+                  <paper-icon-button class="rate-icon" icon="thumb-down"></paper-icon-button>
+                </div>
+                  <div class="rate-empresa"><strong>Empresa Patito</strong></div>
+                </div>
+                <div class="card-content">
+                  <div class="rate-header"><strong>23/07/17</strong></div>
+                  <div class="rate-correo">jperez@patito.com</div><br>
+                  <div class="rate-telefono">55-4567-5678</div>
+                  <div class="rate-nombre"><strong>Juan Peréz</strong></div>
+                  <div class="card-actions">
+                  <paper-icon-button class="rate-icon" icon="thumb-up"></paper-icon-button>
+                  <paper-icon-button class="rate-icon" icon="thumb-down"></paper-icon-button>
+                </div>
+                  <div class="rate-empresa"><strong>Empresa Patito</strong></div>
+                </div>
+                <div class="card-content">
+                  <div class="rate-header"><strong>23/07/17</strong></div>
+                  <div class="rate-correo">jperez@patito.com</div><br>
+                  <div class="rate-telefono">55-4567-5678</div>
+                  <div class="rate-nombre"><strong>Juan Peréz</strong></div>
+                 <div class="card-actions">
+                  <paper-icon-button class="rate-icon" icon="thumb-up"></paper-icon-button>
+                  <paper-icon-button class="rate-icon" icon="thumb-down"></paper-icon-button>
+                </div>
+                  <div class="rate-empresa"><strong>Empresa Patito</strong></div>
+                </div>
+                <div class="card-content">
+                  <div class="rate-header"><strong>23/07/17</strong></div>
+                  <div class="rate-correo">jperez@patito.com</div><br>
+                  <div class="rate-telefono">55-4567-5678</div>
+                  <div class="rate-nombre"><strong>Juan Peréz</strong></div>
+                <div class="card-actions">
+                  <paper-icon-button class="rate-icon" icon="thumb-up"></paper-icon-button>
+                  <paper-icon-button class="rate-icon" icon="thumb-down"></paper-icon-button>
+                </div>
+                  <div class="rate-empresa"><strong>Empresa Patito</strong></div>
+                </div>
+
+                <div class="card-button">
+                  <button class="rate-button">Descargar Leads</button>
+                </div>
+              </paper-card>
+              </paper-material>
+              <paper-material elevation="2" class="cuadro">
+                <img src="images/iconos/Rimpresiones.png"></img>
+                <h1>Reporte de Impresiones</h1>
+                <p class="subtitle">Impresiones de tus anuncios en Google y Facebook</p>  
+                <hr>  
+                <p class="datos1">5,900</p>  
+              </paper-material>
+              <paper-material elevation="2" class="cuadro">
+                <img src="images/iconos/RClicks.png"></img>
+                <h1>Reporte de Clicks</h1>
+                <p class="subtitle">Clicks en los anuncios de Google y Facebook</p>  
+                <hr>              
+                <p class="datos2">405</p>  
+
+              </paper-material>
+              <paper-material elevation="2" class="cuadro">
+                <img src="images/iconos/Costo.png"></img>
+                <h1>Costo de Campaña</h1>
+                <p class="subtitle">Inversión en Campaña para generación de Leads</p>  
+                <hr>                  
+                <p class="datos3">$1,873.22</p>  
+              </paper-material>
+              <paper-material elevation="2" class="cuadro">
+                <img src="images/iconos/IShare.png"></img>
+                <h1>Impression Share</h1>
+                <p class="subtitle">Porcentaje de alcance de la campaña</p>  
+                <hr>                  
+                <p class="datos4">60%</p>  
+              </paper-material>
+            </section>
+            <section data-route="reporte" tabindex="-1">
+              <paper-material elevation="2">
+                <h1 class="page-title" tabindex="-1">Modificar</h1>
+                <p>Modifica tu sitio en esta sección</p>
+              </paper-material>
+            </section>
+            <section data-route="modificar" tabindex="-1">
+              <paper-material elevation="1">
+                <h1 class="page-title" tabindex="-1">Modificar</h1>
+                <p>Modifica tu sitio en esta sección</p>
+              </paper-material>
+            </section>
+
+            <section data-route="facturas" tabindex="-1">
+              <paper-material elevation="1">
+                <h1 class="page-title" tabindex="-1">Facturas</h1>
+                <p>Obtén tu factura aquí</p>
+              </paper-material>
+            </section>
+
+            <section data-route="salir" tabindex="-1">
+              <paper-material elevation="1">
+                <h1 class="page-title" tabindex="-1">Salir</h1>
+                <p>Gracias</p>
+              </paper-material>
+            </section>
+          </iron-pages>
+        </div>
+      </paper-scroll-header-panel>
+    </paper-drawer-panel>
+    
+    <!-- Uncomment next block to enable Service Worker support (1/2) -->
+    <paper-toast id="caching-complete"
+                 duration="6000"
+                 text="Caching complete! This app will work offline.">
+    </paper-toast>
+
+    <platinum-sw-register auto-register
+                          clients-claim
+                          skip-waiting
+                          base-uri="bower_components/platinum-sw/bootstrap"
+                          on-service-worker-installed="displayInstalledToast">
+      <platinum-sw-cache default-cache-strategy="fastest"
+                         cache-config-file="cache-config.json">
+      </platinum-sw-cache>
+    </platinum-sw-register>
+  </template>
+
+  <!-- build:js scripts/app.js -->
+  <script src="scripts/app.js"></script>
+  <!-- endbuild-->
+</body>
+
+</html>

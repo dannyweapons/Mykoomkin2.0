@@ -1,0 +1,9 @@
+body {
+  background: #ebf3fd;
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #333;
+}
+
+.page-title {
+  outline: none;
+}

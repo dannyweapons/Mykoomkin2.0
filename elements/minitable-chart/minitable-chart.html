@@ -1,0 +1,66 @@
+<link rel=import href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../../bower_components/google-chart/google-chart.html">
+
+<dom-module id="minitable-chart">
+	<template>
+		<style>
+			#minitablechart {
+          text-align: center;
+          height: 200px;
+          width: 31%;
+        }
+ 			}
+		</style>
+		
+		<google-chart
+			      id="minitablechart"
+            type='table'
+            cssClassNames = '{
+                "headerRow" : "headerRow",
+                "oddTableRow" : "oddTableRow"
+              }'
+            options='{
+            	  "title": "", 
+                "cssClassNames": "cssClassNames",
+                "legend": {
+                "position": "none"
+              }
+              }'
+            data='[["Estado", "Leads"], 
+                   ["CDMX", 37],
+                   ["Edo. Mex", 9],
+                   ["Jalisco", 5],
+                   ["Guanajuato", 3],
+                   ["San Luis", 3]]'>
+    </google-chart>   
+	</template>
+	<script>
+		Polymer({
+			is: "minitable-chart",
+			behaviors: [
+        Polymer.IronResizableBehavior
+      ],
+
+      listeners: {
+        'iron-resize': '_onIronResize'
+      },
+
+      attached: function() {
+        this.async(this.notifyResize, 1);
+      },
+
+      get parent() {
+        if (this.parentNode.nodeType === Node.DOCUMENT_FRAGMENT_NODE) {
+          return this.parentNode.host;
+        }
+        return this.parentNode;
+      },
+
+      _onIronResize: function() {
+        // Ensure every chart is redrawn on resize for full responsiveness
+        this.$.minitablechart.redraw(); 
+      }
+		});
+	</script>
+</dom-module>
