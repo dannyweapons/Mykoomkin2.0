@@ -16,9 +16,7 @@
     --accent-color: var(--paper-pink-a200);
     --light-accent-color: var(--paper-pink-a100);
     --dark-accent-color: var(--paper-pink-a400);
-
     /* Components */
-
     /* paper-drawer-panel */
     --drawer-menu-color: rgb(41,125,182);
     --drawer-border-color: 1px solid #ccc;
@@ -35,42 +33,34 @@
     @apply(--layout-fullbleed);
     @apply(--layout-vertical);
   }
-
   .space {
     @apply(--layout-flex);
   }
-
   #drawerToolbar {
     color: var(--secondary-text-color);
     background-color: var(--drawer-menu-color);
     border-bottom: var(--drawer-toolbar-border-color);
   }
-
   #drawerToolbar .menu-name {
     @apply(--paper-font-title);
     color: white;
-
   }
-
   img {
     float: left;
     margin-right: 10px;
     width: 35px;
   }
-
   h1{
     padding:0px;
     font-size: 16px;
     margin-bottom: 3px;
     margin-top: 1px;
   }
-
   p.subtitle{
     font-size: 11px;
     color: #a3a3a3;
     margin-top: 0px;
   }
-
   paper-scroll-header-panel {
     height: 100%;
   }
@@ -197,7 +187,107 @@
       padding-left: 18px;
       padding-right: 20px;
     }
+    .card-content{ 
+      width: 100% !important;
+      border-style: solid;
+      padding: 8px !important;
+      border-color: #d0d1d1;
+      border-width: 1px;
+      height: 100px;
+    }
+    .card-info{ 
+      visibility: hidden;
+      border-style: solid;
+      padding: 3px;
+      border-color: #d0d1d1;
+      border-width: 1px;
+      float: right;
+      width: 0%;
+    }
+    .card-button{ 
+      width: 99.2%;
+      border-style: solid;
+      padding: 3px;
+      border-color: #d0d1d1;
+      border-width: 1px;
+      height: 10%;
+      visibility: hidden;
+    }
 
+    p.corp{
+      color: #10cebc;
+      font-size: 12px;
+      margin-top: 0px;
+      margin-bottom: 0px; 
+      padding-right: 20%;
+      float: left;
+    }
+
+    p.pyme{
+      color: #2075b5;
+      font-size: 12px;
+      margin-top: 0px;
+      margin-bottom: 0px; 
+      float: right;
+      padding-right: 2px;
+    }
+    .prog{
+      float: right;
+      position: relative;
+      overflow: hidden;
+      padding-top: 9px;
+      width: 38% !important;
+    }
+    .rate-empresa {  
+      font-size: 14px;
+      color: #3db665; 
+      padding-top: 2px;
+    }
+    .rate-correo { 
+      font-size: 12px;
+      color: #3790ce; 
+      float: right;
+      position: relative;
+
+    }
+    .rate-telefono { 
+      font-size: 12px;
+      color: #f26432;
+      float: right; 
+      position: relative;
+    }
+    .rate-lead { 
+      font-size: 12px;
+      color: #76797b;
+      float: right; 
+      position: relative;
+    }
+    .rate-header { 
+      color: #76797b;
+      font-size: 12px;
+      position: absolute;
+    }
+    .rate-nombre { 
+      font-size: 14px;
+       color: black; 
+    }
+    .rate-button { 
+      font-size: 14px;
+      float: right; 
+      background-color:#10cebc; 
+      color: white;
+      border-color: transparent;
+      border-radius: 2px;
+      margin: 10px;
+    }
+    paper-icon-button.rate-icon {
+      --iron-icon-fill-color: white;
+      --iron-icon-stroke-color: #10cebc;
+      float: right;
+      position: relative;
+      padding-top: 0px;
+      height: 28px;
+    }
   }
 
   /* Tablet+ */
@@ -244,6 +334,15 @@
       float: left;
     }
 
+    paper-progress {
+      display: block;
+      width: 40%;
+      margin: 0px 0;
+      float: right;
+      position: relative;
+      padding-top: 6px;
+    }
+
 /* Clase para la informacion del primer cuadro de la derecha */
     p.datos1{
       color: #00a6d4;
@@ -275,8 +374,32 @@
       font-size: 22px;
       margin-top: 0px;
     }
+    p.periodo{
+      color: #10cebc;
+      font-size: 12px;
+      margin-top: 0px;
+      margin-bottom: 0px; 
+      float: right;
+      padding-right: 5%;
+    }
+    p.corp{
+      color: #10cebc;
+      font-size: 12px;
+      margin-top: 0px;
+      margin-bottom: 0px; 
+      float: right;
+      padding-right: 25%;
+    }
 
-  }
+    p.pyme{
+      color: #2075b5;
+      font-size: 12px;
+      margin-top: 0px;
+      margin-bottom: 0px; 
+      float: right;
+      padding-right: 2px;
+    }
+
     .rate-image {
       position: absolute;
       top: 0;
@@ -285,7 +408,7 @@
       width: 100px;
       background-size: cover;
     }
-    paper-icon-button.rate-icon {
+    .rate-icon {
       --iron-icon-fill-color: white;
       --iron-icon-stroke-color: #10cebc;
       float: right;
@@ -293,22 +416,60 @@
       padding-top: 0px;
       height: 28px;
     }
+    .icon-search{
+      float: right;
+      width: 4%;
+    }
+    .rate-icon1{
+      --iron-icon-fill-color: white;
+      --iron-icon-stroke-color: #10cebc;
+      position: relative;
+      padding-top: 0px;
+      margin-top: 80px;
+      padding-left: 10px;
+
+    }
+    .rate-icon1:hover {
+      --iron-icon-fill-color: #10cebc;
+      --iron-icon-stroke-color: #10cebc;
+    }
     .rate-empresa {  
       font-size: 14px;
       color: #3db665; 
       padding-top: 2px;
     }
+    .inf-empresa {  
+      font-size: 18px;
+      color: #3db665; 
+      padding-top: 2px;
+      padding-left: 10px;
+      position: absolute;
+    }
     .rate-correo { 
       font-size: 12px;
-      color: #3790ce; 
+      color: #f26432; 
       float: right;
       position: relative;
-
+    }
+    .inf-correo { 
+      font-size: 16px;
+      color: #f26432; 
+      float: right;
+      position: relative;
+      padding-right: 10px;
     }
     .rate-telefono { 
       font-size: 12px;
-      color: #f26432;
+      color: #a3a3a3;
       float: right; 
+      position: relative;
+    }
+    .inf-telefono { 
+      font-size: 16px;
+      color: #a3a3a3;
+      float: right; 
+      padding-top: 5px;
+      padding-right: 45px;
       position: relative;
     }
     .rate-lead { 
@@ -322,9 +483,142 @@
       font-size: 12px;
       position: absolute;
     }
+    .inf-header { 
+      color: #76797b;
+      font-size: 12px;
+      position: absolute;
+    }
     .rate-nombre { 
       font-size: 14px;
       color: black; 
+    }
+    .inf-nombre { 
+      font-size: 18px;
+      color: black; 
+      position: absolute;
+      padding-left: 10px;
+    }
+    .inf-mensaje { 
+      font-size: 18px;
+      color: black; 
+      padding-top: 10px;
+      padding-left: 10px;
+      padding-right: 10px;
+      text-align: justify;
+    }
+    .inf-lead { 
+      font-size: 20px;
+      color: #00a6d4; 
+      padding-left: 10px;
+      padding-right: 15%;
+      padding-top: 20px;
+      float: right;
+      position: relative;
+    }
+    .inf-estatus { 
+      font-size: 20px;
+      padding-left: 10px;
+      padding-top: 20px;
+      color: #00a6d4;
+    }
+    .inf-fecha { 
+      font-size: 12px;
+      padding-left: 10px;
+      color: #a3a3a3;
+      position: relative;
+      padding-top: 8px;
+    }
+    .inf-estado { 
+      font-size: 16px;
+      color: #a3a3a3;
+      float: right;
+      position: relative;
+      padding-right: 19px;
+    }
+    .card-estatus{
+      width: 40% !important;
+      display: inline-block;
+    }
+    .card-actions1{
+      width: 50%;
+      display: inline-block;
+      float: right;
+      position: relative;
+    }
+    .btn-estatusv{
+      color: white;
+      width: 30%;
+      margin-left: 40px;
+      height: 25px;
+      margin-top: 7px;
+      border-color: transparent;
+      border-radius: 3px;
+      background-color: #d1d1d1;
+      font-size: 16px;
+    }
+    .btn-estatusv:hover{
+      background-color:#10cebc; 
+    }
+    .btn-estatusp{
+      color: white;
+      width: 30%;
+      margin-left: 40px;
+      height: 25px;
+      margin-top: 7px;
+      border-color: transparent;
+      border-radius: 3px;
+      background-color: #d1d1d1;
+      font-size: 16px;
+
+    }
+    .pagination {
+      display: inline-block;
+      padding-top: 5px;
+    }
+    .pagination a {
+      color: black;
+      float: left;
+      padding: 8px 16px;
+      text-decoration: none;
+      transition: background-color .3s;
+    }
+    .pagination a.active {
+      background-color: #10cebc;
+      color: white;
+    }
+    .pagination a:hover:not(.active) {
+      background-color: #ddd;
+    }
+    .btn-estatusp:hover{
+      background-color:#ffa500; 
+    }
+    .btn-estatusc{
+      color: white;
+      width: 30%;
+      margin-left: 40px;
+      height: 25px;
+      margin-top: 7px;
+      border-color: transparent;
+      border-radius: 3px;
+      background-color: #d1d1d1;
+      font-size: 16px;
+    }
+    .btn-estatusc:hover{
+      background-color:#703b8c; 
+    }
+    .btn-estatusd{
+      color: white;
+      width: 30%;
+      margin-left: 40px;
+      height: 25px;
+      margin-top: 7px;
+      border-color: transparent;
+      border-radius: 3px;
+      background-color: #d1d1d1;
+      font-size: 16px;
+    }
+    .btn-estatusd:hover{
+      background-color:red; 
     }
     .rate-button { 
       font-size: 14px;
@@ -351,6 +645,31 @@
       height: 100%;
       width: 30%;
     }
+    [type="date"] {
+      background:#fff url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png)  97% 50% no-repeat ;
+    }
+    [type="date"]::-webkit-inner-spin-button {
+      display: none;
+    }
+    [type="date"]::-webkit-calendar-picker-indicator {
+      opacity: 0;
+      color: #10cebc;
+    }
+    label {
+      display: block;
+    }   
+    input {
+      border: 1px solid #c4c4c4;
+      border-radius: 5px;
+      background-color: #10cebc;
+      padding: 3px 5px;
+      box-shadow: inset 0 3px 6px rgba(0,0,0,0.1);
+      width: 100px;
+      float: right;
+      position: relative;
+      margin-right: 10px;
+      margin-top:10px; 
+    }
     .card-content{ 
       width: 35%;
       border-style: solid;
@@ -358,6 +677,10 @@
       border-color: #d0d1d1;
       border-width: 1px;
       height: 13%;
+    }
+    .card-content:hover{ 
+      border-color: #10cebc;
+      border-width: 2px;
     }
     .card-info{ 
       width: 63.5%;
@@ -379,31 +702,20 @@
     .collapse1{
       width: 100%; 
     }
-  /* Material Design Adaptive Breakpoints */
-  /*
-    Below you'll find CSS media queries based on the breakpoint guidance
-    published by the Material Design team. You can choose to use, customise
-    or remove these breakpoints based on your needs.
-
-    http://www.google.com/design/spec/layout/adaptive-ui.html#adaptive-ui-breakpoints
-   */
-
+ }
   /* mobile-small */
   @media all and (min-width: 0) and (max-width: 360px) and (orientation: portrait) { 
-
   img {
     float: left;
     margin-right: 10px;
     width: 40px;
   }
-
   h1{
     padding:0px;
     font-size: 16px;
     margin-bottom: 4px;
     margin-top: 7px;
   }
-
   p.subtitle{
     font-size: 11px;
     color: #a3a3a3;
@@ -439,6 +751,30 @@
       text-align: center;
       font-size: 24px;
       margin-top: 0px;
+    }
+      .card-content{ 
+      width: 100%;
+      border-style: solid;
+      padding: 3px;
+      border-color: #d0d1d1;
+      border-width: 1px;
+    }
+    .card-info{ 
+      visibility: hidden;
+      border-style: solid;
+      padding: 3px;
+      border-color: #d0d1d1;
+      border-width: 1px;
+      float: right;
+    }
+    .card-button{ 
+      width: 99.2%;
+      border-style: solid;
+      padding: 3px;
+      border-color: #d0d1d1;
+      border-width: 1px;
+      height: 10%;
+      visibility: hidden;
     }
   }
   /* mobile-large */
