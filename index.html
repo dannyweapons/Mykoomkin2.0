@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="es">
-
 <head>
   <meta charset="utf-8">
   <meta name="description" content="">
@@ -33,7 +32,6 @@
   <link rel="import" href="../bower_components/vaadin-grid-master/vaadin-grid.html">
   <!-- For shared styles, shared-styles.html import in elements.html -->
 </head>
-
 <body unresolved>
   <!-- build:remove -->
   <span id="browser-sync-binding"></span>
@@ -46,7 +44,6 @@
         <paper-toolbar id="drawerToolbar">
           <span class="menu-name">Menu</span>
         </paper-toolbar>
-
         <!-- Drawer Content -->
         <paper-menu class="app-menu" attr-for-selected="data-route" selected="[[route]]">
           <a data-route="home" href="{{baseUrl}}home">
@@ -86,7 +83,7 @@
                 <h1>Reporte de Leads</h1>
                 <p class="subtitle">Oportunidades de venta últimos 12 meses</p>  
                 <hr>
-                  <leads-chart></leads-chart>  
+                <leads-chart></leads-chart>  
               </paper-material>
               <paper-material elevation="2">
                 <img src="images/iconos/REstado.png"></img>
@@ -98,84 +95,111 @@
               </paper-material>
               <paper-material elevation="2">
                 <img src="images/iconos/Cotizaciones.png"></img>
+                <paper-progress class="prog" value="70"></paper-progress>
                 <h1>Cotizaciones</h1>
+                <p class="pyme">Like</p>
+                <p class="corp">Dislike</p>
                 <p class="subtitle">Oportunidades de Venta (30 días)</p>  
                 <hr>  
                 <quotation-chart></quotation-chart>
               </paper-material>
               <paper-material elevation="2" class="table">
-                <img src="images/iconos/DLeads.png"></img>
-                <h1>Detalle Leads</h1>
-                <p class="subtitle">Descripción de las oportunidades de venta</p> 
-                <hr>     
+                <img src="images/iconos/DLeads.png"></img>                
+                <paper-icon-button class="icon-search" icon="search"></paper-icon-button>
+                <input type="date" name="dateofbirth" id="dateofbirth">
+                <input type="date" name="dateofbirth" id="dateofbirth">
+                <h1>Detalle Leads</h1>                
+                <p class="subtitle">Descripción de las oportunidades de venta</p>
+                <hr>
                 <div class="card-info">
-                  <div class="rate-header"><strong>23/07/17</strong></div>
-                  <div class="rate-correo">jperez@patito.com</div><br>
-                  <div class="rate-telefono">55-4567-5678</div>
-                  <div class="rate-nombre"><strong>Juan Peréz</strong></div>
-                  <paper-icon-button class="rate-icon" icon="thumb-up"></paper-icon-button>
-                  <paper-icon-button class="rate-icon" icon="thumb-down"></paper-icon-button>
-                </div>
-                  <div class="rate-empresa"><strong>Empresa Patito</strong></div>
-                </div>       
+                  <div class="inf-nombre"><strong>Juan Pérez</strong></div>
+                  <div class="inf-estado">Estado de México</div><br>
+                  <div class="inf-empresa">Empresa Patito</div>
+                  <div class="inf-correo">jperez@patito.com</div><br>
+                  <div class="inf-telefono">55-4567-5678</div>
+                  <div class="inf-fecha">23/07/17 &nbsp &nbsp 13:48:25</div>
+                  <hr>
+                  <div class="inf-mensaje">“Buen día, me recomendaron con ustedes para cotizar «producto», ¿Me pueden contactar para revisar más a detalle mi requerimiento? Muchas gracias”</div>
+                  <div class="card-actions1">
+                  <div class="inf-lead">Califica este Lead</div>
+                    <paper-icon-button class="rate-icon1" icon="thumb-up"></paper-icon-button>
+                    <paper-icon-button class="rate-icon1" icon="thumb-down"></paper-icon-button>
+                  </div>
+                  <div class="card-status">
+                    <div class="inf-estatus">¿Cuál es el estatus del Lead?</div>
+                    <button class="btn-estatusv">Vendido</button><br>
+                    <button class="btn-estatusp">En Proceso</button><br>
+                    <button class="btn-estatusc">Sin Contacto</button><br>
+                    <button class="btn-estatusd">Descartado</button><br> 
+                  </div>            
+                </div>         
               <paper-card class="rate">  
                 <div class="card-content">
                   <div class="rate-header"><strong>23/07/17</strong></div>
                   <div class="rate-correo">jperez@patito.com</div><br>
                   <div class="rate-telefono">55-4567-5678</div>
-                  <div class="rate-nombre"><strong>Juan Peréz</strong></div>
-                  <div class="card-actions">
-                  <paper-icon-button class="rate-icon" icon="thumb-up"></paper-icon-button>
-                  <paper-icon-button class="rate-icon" icon="thumb-down"></paper-icon-button>
-                </div>
-                  <div class="rate-empresa"><strong>Empresa Patito</strong></div>
-                </div>
-                <div class="card-content">
-                  <div class="rate-header"><strong>23/07/17</strong></div>
-                  <div class="rate-correo">jperez@patito.com</div><br>
-                  <div class="rate-telefono">55-4567-5678</div>
-                  <div class="rate-nombre"><strong>Juan Peréz</strong></div>
-                  <div class="card-actions">
-                  <paper-icon-button class="rate-icon" icon="thumb-up"></paper-icon-button>
-                  <paper-icon-button class="rate-icon" icon="thumb-down"></paper-icon-button>
-                </div>
-                  <div class="rate-empresa"><strong>Empresa Patito</strong></div>
-                </div>
-                <div class="card-content">
-                  <div class="rate-header"><strong>23/07/17</strong></div>
-                  <div class="rate-correo">jperez@patito.com</div><br>
-                  <div class="rate-telefono">55-4567-5678</div>
-                  <div class="rate-nombre"><strong>Juan Peréz</strong></div>
-                  <div class="card-actions">
-                  <paper-icon-button class="rate-icon" icon="thumb-up"></paper-icon-button>
-                  <paper-icon-button class="rate-icon" icon="thumb-down"></paper-icon-button>
-                </div>
-                  <div class="rate-empresa"><strong>Empresa Patito</strong></div>
-                </div>
-                <div class="card-content">
-                  <div class="rate-header"><strong>23/07/17</strong></div>
-                  <div class="rate-correo">jperez@patito.com</div><br>
-                  <div class="rate-telefono">55-4567-5678</div>
-                  <div class="rate-nombre"><strong>Juan Peréz</strong></div>
-                 <div class="card-actions">
-                  <paper-icon-button class="rate-icon" icon="thumb-up"></paper-icon-button>
-                  <paper-icon-button class="rate-icon" icon="thumb-down"></paper-icon-button>
-                </div>
-                  <div class="rate-empresa"><strong>Empresa Patito</strong></div>
-                </div>
-                <div class="card-content">
-                  <div class="rate-header"><strong>23/07/17</strong></div>
-                  <div class="rate-correo">jperez@patito.com</div><br>
-                  <div class="rate-telefono">55-4567-5678</div>
-                  <div class="rate-nombre"><strong>Juan Peréz</strong></div>
+                  <div class="rate-nombre"><strong>Juan Pérez</strong></div>
                 <div class="card-actions">
-                  <paper-icon-button class="rate-icon" icon="thumb-up"></paper-icon-button>
                   <paper-icon-button class="rate-icon" icon="thumb-down"></paper-icon-button>
+                  <paper-icon-button class="rate-icon" icon="thumb-up"></paper-icon-button>
                 </div>
                   <div class="rate-empresa"><strong>Empresa Patito</strong></div>
                 </div>
-
+                <div class="card-content">
+                  <div class="rate-header"><strong>23/07/17</strong></div>
+                  <div class="rate-correo">jperez@patito.com</div><br>
+                  <div class="rate-telefono">55-4567-5678</div>
+                  <div class="rate-nombre"><strong>Juan Pérez</strong></div>
+                  <div class="card-actions">
+                   <paper-icon-button class="rate-icon" icon="thumb-down"></paper-icon-button>
+                  <paper-icon-button class="rate-icon" icon="thumb-up"></paper-icon-button>
+                </div>
+                  <div class="rate-empresa"><strong>Empresa Patito</strong></div>
+                </div>
+                <div class="card-content">
+                  <div class="rate-header"><strong>23/07/17</strong></div>
+                  <div class="rate-correo">jperez@patito.com</div><br>
+                  <div class="rate-telefono">55-4567-5678</div>
+                  <div class="rate-nombre"><strong>Juan Pérez</strong></div>
+                  <div class="card-actions">
+                  <paper-icon-button class="rate-icon" icon="thumb-down"></paper-icon-button>
+                  <paper-icon-button class="rate-icon" icon="thumb-up"></paper-icon-button>
+                </div>
+                  <div class="rate-empresa"><strong>Empresa Patito</strong></div>
+                </div>
+                <div class="card-content">
+                  <div class="rate-header"><strong>23/07/17</strong></div>
+                  <div class="rate-correo">jperez@patito.com</div><br>
+                  <div class="rate-telefono">55-4567-5678</div>
+                  <div class="rate-nombre"><strong>Juan Pérez</strong></div>
+                 <div class="card-actions">
+                  <paper-icon-button class="rate-icon" icon="thumb-down"></paper-icon-button>
+                  <paper-icon-button class="rate-icon" icon="thumb-up"></paper-icon-button>
+                </div>
+                  <div class="rate-empresa"><strong>Empresa Patito</strong></div>
+                </div>
+                <div class="card-content">
+                  <div class="rate-header"><strong>23/07/17</strong></div>
+                  <div class="rate-correo">jperez@patito.com</div><br>
+                  <div class="rate-telefono">55-4567-5678</div>
+                  <div class="rate-nombre"><strong>Juan Pérez</strong></div>
+                <div class="card-actions">
+                  <paper-icon-button class="rate-icon" icon="thumb-down"></paper-icon-button>
+                  <paper-icon-button class="rate-icon" icon="thumb-up"></paper-icon-button>
+                </div>
+                  <div class="rate-empresa"><strong>Empresa Patito</strong></div>
+                </div>
                 <div class="card-button">
+                 <div class="pagination">
+                  <a>&laquo;</a>
+                  <a class="active">1</a>
+                  <a>2</a>
+                  <a>3</a>
+                  <a>4</a>
+                  <a>5</a>
+                  <a >6</a>
+                  <a >&raquo;</a>
+                 </div>
                   <button class="rate-button">Descargar Leads</button>
                 </div>
               </paper-card>
@@ -193,7 +217,6 @@
                 <p class="subtitle">Clicks en los anuncios de Google y Facebook</p>  
                 <hr>              
                 <p class="datos2">405</p>  
-
               </paper-material>
               <paper-material elevation="2" class="cuadro">
                 <img src="images/iconos/Costo.png"></img>
@@ -222,14 +245,12 @@
                 <p>Modifica tu sitio en esta sección</p>
               </paper-material>
             </section>
-
             <section data-route="facturas" tabindex="-1">
               <paper-material elevation="1">
                 <h1 class="page-title" tabindex="-1">Facturas</h1>
                 <p>Obtén tu factura aquí</p>
               </paper-material>
             </section>
-
             <section data-route="salir" tabindex="-1">
               <paper-material elevation="1">
                 <h1 class="page-title" tabindex="-1">Salir</h1>
@@ -240,13 +261,11 @@
         </div>
       </paper-scroll-header-panel>
     </paper-drawer-panel>
-    
     <!-- Uncomment next block to enable Service Worker support (1/2) -->
     <paper-toast id="caching-complete"
                  duration="6000"
                  text="Caching complete! This app will work offline.">
     </paper-toast>
-
     <platinum-sw-register auto-register
                           clients-claim
                           skip-waiting
@@ -257,10 +276,28 @@
       </platinum-sw-cache>
     </platinum-sw-register>
   </template>
-
   <!-- build:js scripts/app.js -->
   <script src="scripts/app.js"></script>
   <!-- endbuild-->
+  <!-- Start of LiveChat (www.livechatinc.com) code -->
+    <script type="text/javascript">
+        window.__lc = window.__lc || {};
+        window.__lc.license = 6959331;
+        (function () {
+            var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = true;
+            lc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn.livechatinc.com/tracking.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
+        })();
+    </script>
+    <script>
+      function _toggle() {
+        var moreInfo = document.getElementById('more-info');
+        var iconButton = Polymer.dom(event).localTarget;
+        iconButton.icon = moreInfo.opened ? 'hardware:keyboard-arrow-up'
+                                          : 'hardware:keyboard-arrow-down';
+        moreInfo.toggle();
+      }
+    </script>
+  <!-- End of LiveChat code -->
 </body>
-
 </html>
